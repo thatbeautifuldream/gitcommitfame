@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 import { env } from "@/env";
 import { Suspense } from "react";
+import Loader from "@/components/loader";
 
 async function getUserData(username: string) {
   const res = await fetch(`${env.NEXT_PUBLIC_API_URL}/api/user/${username}`, {
@@ -27,7 +28,7 @@ export default async function UserPage({
   const { user, events } = await getUserData(params.username);
 
   return (
-    <Suspense fallback={<div>Loading user data...</div>}>
+    <Suspense fallback={<Loader />}>
       <div className="container mx-auto py-8">
         <Card>
           <CardHeader>
