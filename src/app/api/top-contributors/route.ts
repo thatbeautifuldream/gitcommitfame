@@ -1,7 +1,8 @@
+import { env } from "@/env";
 import { Octokit } from "@octokit/rest";
 import { NextResponse } from "next/server";
 
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+const octokit = new Octokit({ auth: env.GITHUB_TOKEN });
 
 export async function GET() {
   try {

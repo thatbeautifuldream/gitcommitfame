@@ -16,7 +16,6 @@ async function getUserData(username: string) {
   const res = await fetch(`${env.NEXT_PUBLIC_API_URL}/api/user/${username}`, {
     cache: "no-store",
   });
-  if (!res.ok) throw new Error("Failed to fetch user data");
   return res.json();
 }
 
@@ -34,12 +33,12 @@ export default async function UserPage({
           <CardHeader>
             <div className="flex items-center space-x-4">
               <Avatar className="h-16 w-16">
-                <AvatarImage src={user.avatar_url} alt={user.login} />
-                <AvatarFallback>{user.login[0]}</AvatarFallback>
+                <AvatarImage src={user?.avatar_url} alt={user?.login} />
+                <AvatarFallback>{user?.login[0]}</AvatarFallback>
               </Avatar>
               <div>
-                <CardTitle>{user.name || user.login}</CardTitle>
-                <p className="text-sm text-gray-500">{user.bio}</p>
+                <CardTitle>{user?.name || user?.login}</CardTitle>
+                <p className="text-sm text-gray-500">{user?.bio}</p>
               </div>
             </div>
           </CardHeader>
@@ -55,12 +54,12 @@ export default async function UserPage({
               </TableHeader>
               <TableBody>
                 {/* @ts-expect-error : event type is not defined */}
-                {events.map((event) => (
-                  <TableRow key={event.id}>
-                    <TableCell>{event.repo.name}</TableCell>
-                    <TableCell>{event.payload.commits[0].message}</TableCell>
+                {events?.map((event) => (
+                  <TableRow key={event?.id}>
+                    <TableCell>{event?.repo?.name}</TableCell>
+                    <TableCell>{event?.payload?.commits[0]?.message}</TableCell>
                     <TableCell>
-                      {new Date(event.created_at).toLocaleDateString()}
+                      {new Date(event?.created_at).toLocaleDateString()}
                     </TableCell>
                   </TableRow>
                 ))}
