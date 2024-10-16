@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Github } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -40,15 +41,13 @@ export default function Home() {
       <footer className="text-center text-sm text-muted-foreground mt-16">
         <p>
           &copy; {new Date().getFullYear()} &lt;GitCommitFame /&gt; by{" "}
-          <a
-            href="https://milindmishra.com"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/thatbeautifuldream"
             className="hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            aria-label="Visit Milind Mishra's website"
+            aria-label="Take a look at Milind's Commit History"
           >
             Milind Mishra
-          </a>
+          </Link>
         </p>
       </footer>
     </div>
