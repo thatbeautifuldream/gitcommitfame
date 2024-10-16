@@ -57,21 +57,25 @@ export default async function UserPage({
                 icon={<Users className="h-4 w-4 text-gray-600" />}
                 value={user?.followers}
                 label="Followers"
+                href={`https://github.com/${user?.login}?tab=followers`}
               />
               <StatBlock
                 icon={<Users className="h-4 w-4 text-gray-600" />}
                 value={user?.following}
                 label="Following"
+                href={`https://github.com/${user?.login}?tab=following`}
               />
               <StatBlock
                 icon={<Book className="h-4 w-4 text-gray-600" />}
                 value={user?.public_repos}
                 label="Repos"
+                href={`https://github.com/${user?.login}?tab=repositories`}
               />
               <StatBlock
                 icon={<GitFork className="h-4 w-4 text-gray-600" />}
                 value={user?.public_gists}
                 label="Gists"
+                href={`https://gist.github.com/${user?.login}`}
               />
             </div>
             <div className="flex justify-center mb-6">
@@ -134,16 +138,23 @@ const StatBlock = ({
   icon,
   value,
   label,
+  href,
 }: {
   icon: React.ReactNode;
   value: number;
   label: string;
+  href: string;
 }) => (
-  <div className="flex items-center space-x-2 p-2 bg-gray-50 rounded-md">
+  <Link
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center space-x-2 p-2 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors"
+  >
     {icon}
     <div>
       <span className="text-sm font-semibold">{value}</span>
       <span className="text-xs text-gray-500 block">{label}</span>
     </div>
-  </div>
+  </Link>
 );
