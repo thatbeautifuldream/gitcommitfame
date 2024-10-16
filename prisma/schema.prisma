@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int      @id @default(autoincrement())
+  githubId          Int      @unique
+  username          String   @unique
+  name              String?
+  avatarUrl         String?
+  bio               String?
+  location          String?
+  email             String?
+  publicRepos       Int
+  followers         Int
+  following         Int
+  createdAt         DateTime
+  updatedAt         DateTime
+  commits           Commit[]
+  totalCommits      Int      @default(0)
+  lastCommitAt      DateTime?
+}
+
+model Commit {
+  id        Int      @id @default(autoincrement())
+  sha       String   @unique
+  message   String
+  createdAt DateTime
+  repoName  String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+}
