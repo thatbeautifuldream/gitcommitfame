@@ -34,7 +34,12 @@ export default function Home() {
                 <span className="italic">highlight</span>
               </RoughNotation>{" "}
               &amp;{" "}
-              <RoughNotation type="underline" color="#3B82F6" order={2}>
+              <RoughNotation
+                type="underline"
+                color="#000000"
+                order={2}
+                padding={0.2}
+              >
                 share
               </RoughNotation>
             </RoughNotationGroup>{" "}
