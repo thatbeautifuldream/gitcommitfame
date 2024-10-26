@@ -1,10 +1,7 @@
+import { inter } from "@/lib/fonts";
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
 import "./globals.css";
-
-const nunito = Nunito({
-  subsets: ["latin"],
-});
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: `git commit -m "fame"`,
@@ -18,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunito.className}`}>{children}</body>
+      <body className={cn(inter.className)}>{children}</body>
     </html>
   );
 }
