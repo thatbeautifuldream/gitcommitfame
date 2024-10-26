@@ -87,55 +87,55 @@ export default async function UserPage({
             <div className="mb-6">
               <h2 className="text-lg font-semibold mb-3">User Details</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {user.location && (
+                {user?.location && (
                   <DetailItem
                     icon={<MapPin className="h-4 w-4" />}
                     label="Location"
                     value={user.location}
                   />
                 )}
-                {user.email && (
+                {user?.email && (
                   <DetailItem
                     icon={<Mail className="h-4 w-4" />}
                     label="Email"
-                    value={user.email}
+                    value={user?.email}
                   />
                 )}
-                {user.blog && (
+                {user?.blog && (
                   <DetailItem
                     icon={<Link2 className="h-4 w-4" />}
                     label="Blog"
-                    value={user.blog}
+                    value={user?.blog}
                     href={
-                      user.blog.startsWith("http")
-                        ? user.blog
-                        : `https://${user.blog}`
+                      user?.blog?.startsWith("http")
+                        ? user?.blog
+                        : `https://${user?.blog}`
                     }
                   />
                 )}
-                {user.twitter_username && (
+                {user?.twitter_username && (
                   <DetailItem
                     icon={<Twitter className="h-4 w-4" />}
                     label="Twitter"
-                    value={`@${user.twitter_username}`}
-                    href={`https://twitter.com/${user.twitter_username}`}
+                    value={`@${user?.twitter_username}`}
+                    href={`https://twitter.com/${user?.twitter_username}`}
                   />
                 )}
                 <DetailItem
                   icon={<Calendar className="h-4 w-4" />}
                   label="Joined"
-                  value={dayjs(user.created_at).format("MMMM D, YYYY")}
+                  value={dayjs(user?.created_at).format("MMMM D, YYYY")}
                 />
                 <DetailItem
                   icon={<Calendar className="h-4 w-4" />}
                   label="Last Updated"
-                  value={dayjs(user.updated_at).format("MMMM D, YYYY")}
+                  value={dayjs(user?.updated_at).format("MMMM D, YYYY")}
                 />
                 <DetailItem
                   icon={<Shield className="h-4 w-4" />}
                   label="2FA"
                   value={
-                    user.two_factor_authentication ? "Enabled" : "Disabled"
+                    user?.two_factor_authentication ? "Enabled" : "Disabled"
                   }
                 />
               </div>
@@ -150,25 +150,25 @@ export default async function UserPage({
                   icon={<Book className="h-4 w-4 text-gray-600" />}
                   value={user.public_repos}
                   label="Public Repos"
-                  href={`https://github.com/${user.login}?tab=repositories`}
+                  href={`https://github.com/${user?.login}?tab=repositories`}
                 />
                 <StatBlock
                   icon={<Book className="h-4 w-4 text-gray-600" />}
                   value={user.total_private_repos}
                   label="Private Repos"
-                  href={`https://github.com/${user.login}?tab=repositories`}
+                  href={`https://github.com/${user?.login}?tab=repositories`}
                 />
                 <StatBlock
                   icon={<GitFork className="h-4 w-4 text-gray-600" />}
                   value={user.public_gists}
                   label="Public Gists"
-                  href={`https://gist.github.com/${user.login}`}
+                  href={`https://gist.github.com/${user?.login}`}
                 />
                 <StatBlock
                   icon={<GitFork className="h-4 w-4 text-gray-600" />}
                   value={user.private_gists}
                   label="Private Gists"
-                  href={`https://gist.github.com/${user.login}`}
+                  href={`https://gist.github.com/${user?.login}`}
                 />
               </div>
             </div>
