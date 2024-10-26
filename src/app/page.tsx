@@ -1,20 +1,51 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { instrumentSerif } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 import { ArrowRight, Github } from "lucide-react";
 import Link from "next/link";
+import React from "react";
 
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-16 min-h-screen flex flex-col justify-between">
-      <section className="text-center space-y-6 max-w-2xl mx-auto">
-        <h1 className="text-5xl font-bold tracking-tight">GitCommitFame</h1>
-        <p className="text-xl text-muted-foreground">
-          Showcase your GitHub commits in one click
-        </p>
-        <div className="flex items-center justify-center space-x-4 text-lg">
-          <Github className="w-6 h-6" />
-          <ArrowRight className="w-6 h-6" />
+      <section className="flex flex-col items-center gap-6 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1
+          className={cn(
+            "text-3xl sm:text-4xl md:text-5xl font-normal text-center leading-tight",
+            instrumentSerif.className
+          )}
+        >
+          <span className="text-gray-900">The Developer's Showcase</span>
+          <br />
+          <span className="text-gray-700">
+            to <span className="italic">highlight</span> &amp; share your GitHub
+            journey!
+          </span>
+        </h1>
+        <h2 className="text-gray-600 text-base sm:text-lg text-center max-w-2xl">
+          {[
+            "Showcase your commits",
+            "visualize your progress",
+            "impress recruiters",
+          ].map((text, index) => (
+            <React.Fragment key={index}>
+              <button
+                className="text-gray-600 hover:text-green-700 font-normal transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-opacity-50 rounded"
+                type="button"
+              >
+                {text}
+              </button>
+              {index < 2 && <span className="mx-1">,</span>}
+              {index === 2 && <span className="mx-1">and</span>}
+            </React.Fragment>
+          ))}
+          <span>connect with the most innovative developers.</span>
+        </h2>
+        <div className="flex items-center justify-center space-x-4 text-base sm:text-lg mt-2">
+          <Github className="w-5 h-5 sm:w-6 sm:h-6" />
+          <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
           <span className="font-semibold">gitcommitfame.com</span>
         </div>
       </section>
