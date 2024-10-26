@@ -5,9 +5,17 @@ import { instrumentSerif } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Github } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
 
 export default function Home() {
+  const [showAnnotations, setShowAnnotations] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowAnnotations(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="container mx-auto px-4 py-16 min-h-screen flex flex-col justify-between">
       <section className="flex flex-col items-center gap-6 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,8 +28,17 @@ export default function Home() {
           <span className="text-gray-900">The Developer's Showcase</span>
           <br />
           <span className="text-gray-700">
-            to <span className="italic">highlight</span> &amp; share your GitHub
-            journey!
+            to{" "}
+            <RoughNotationGroup show={showAnnotations}>
+              <RoughNotation type="highlight" color="#34D399" order={1}>
+                <span className="italic">highlight</span>
+              </RoughNotation>{" "}
+              &amp;{" "}
+              <RoughNotation type="underline" color="#3B82F6" order={2}>
+                share
+              </RoughNotation>
+            </RoughNotationGroup>{" "}
+            your GitHub journey!
           </span>
         </h1>
         <h2 className="text-gray-600 text-base sm:text-lg text-center max-w-2xl">
