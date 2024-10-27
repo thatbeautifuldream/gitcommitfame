@@ -11,6 +11,7 @@ import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
 export default function Home() {
   const [showAnnotations, setShowAnnotations] = useState(false);
 
+  // TODO : fix random layout shift from the rough notation library
   useEffect(() => {
     const timer = setTimeout(() => setShowAnnotations(true), 500);
     return () => clearTimeout(timer);
